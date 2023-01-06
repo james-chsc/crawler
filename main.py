@@ -30,3 +30,4 @@ for rsv in reservoirs:
   ws.append([name, volumn])
   
 wb.save('水庫資訊.xlsx')
+wb.close
