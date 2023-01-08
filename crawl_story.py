@@ -37,16 +37,18 @@ try:
         # print(ep_name, ep_url)
         ws.append([ep_name, ep_url])
 
-        if 1742 <= int(ep_name[1:-1]) <= 1800:
+        if 1805 <= int(ep_name[1:-1]) <= 1850:
             
             rsp = requests.get(ep_url)
             if rsp.status_code != 200:
                 raise RuntimeError(f'抓取網頁{ep_url}發生錯誤，代碼：{rsp.status_code}')  
-            
+            print(f'\n{ep_name}：', end='')
+
             soup = BeautifulSoup(rsp.text, 'html5lib')
             content = soup.select_one('div#nr1').text.replace(chr(160),'')
             for _ in content.split('\n'): 
-                ws_story.append([_])         
+                ws_story.append([_])
+                print('.', end='')    
 
 except RuntimeError as e:
     print("發生錯誤：",repr(e))  
