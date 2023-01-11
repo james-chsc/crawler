@@ -13,9 +13,9 @@ try:
 
     # 抓取回傳的狀態碼，200表示成功，不是表示有錯誤發生
     if rsp.status_code != 200:
-        raise RuntimeError(f'抓取網頁{url}發生錯誤，代碼：{rsp.status_code}')  
+        raise RuntimeError(f'抓取網頁{url}發生錯誤，代碼：{rsp.status_code}')
 
-    # 也可以用 html5lib，不過要先安裝 pip install html5lib
+    # html.parser 也可以改用 html5lib，不過要先安裝 pip install html5lib
     soup = BeautifulSoup(rsp.text, 'html.parser')
 
     # prettify()用來把 html 程式變漂亮
